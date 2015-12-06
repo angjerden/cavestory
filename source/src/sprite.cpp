@@ -1,5 +1,6 @@
 #include "sprite.h"
 #include "graphics.h"
+#include "globals.h"
 #include <stdio.h>
 
 Sprite::Sprite() {
@@ -27,14 +28,14 @@ Sprite::Sprite(Graphics &graphics,
 			graphics.loadImage(filePath));
 
 	if (this->_spriteSheet == NULL) {
-		printf("\nError: Unable to load image\n");
+		printf("\nError: Unable to load image:\n%s", SDL_GetError());
 	}
 }
 
 Sprite::~Sprite() {}
 
 void Sprite::draw(Graphics &graphics, int x, int y) {
-	SDL_Rect destinationRectangle = {x, y, this->_sourceRect.w, this->_sourceRect.h };
+	SDL_Rect destinationRectangle = {x, y, this->_sourceRect.w * globals::SPRITE_SCALE, this->_sourceRect.h * globals::SPRITE_SCALE};
 	graphics.blitSurface(this->_spriteSheet, &this->_sourceRect, &destinationRectangle);
 }
 

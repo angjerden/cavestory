@@ -3,6 +3,7 @@
 #include "game.h"
 #include "graphics.h"
 #include "input.h"
+#include <windows.h>
 
 /* Game class
  * This class holds all the information for our main game loop
