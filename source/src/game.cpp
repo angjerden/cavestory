@@ -3,7 +3,9 @@
 #include "game.h"
 #include "graphics.h"
 #include "input.h"
-#include <windows.h>
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32)
+	#include <windows.h>
+#endif
 
 /* Game class
  * This class holds all the information for our main game loop
